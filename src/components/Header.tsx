@@ -5,7 +5,7 @@ export default function Header() {
     <section className="flex justify-between items-center p-4 bg-white">
       <div>
         <Image
-          src="/assets/images/whatbytes logo.jpg" // Corrected path
+          src="/assets/images/whatbytes_logo-removebg-preview.png" // Corrected path
           alt="logo"
           width={40}
           height={40}

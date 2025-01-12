@@ -52,7 +52,7 @@ export default function Syllabus() {
       <div className="bg-white p-6 rounded-lg w-full mt-4 border border-gray-100 shadow-sm">
         <div>
             <h2 className="text-md font-semibold mb-2">Question Analysis</h2>
-                  <p>{correctAnswers}/15</p>
+            <p> 10/15 </p>
         </div>
               
         <p className="mb-4 text-gray-600"><b>You scored 10 out of 15 questions correctly.</b> However, it still needs some improvements.</p>
