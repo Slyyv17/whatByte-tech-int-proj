@@ -1,8 +1,10 @@
+import SkillTestCard from "@/components/SkillTestCard";
+
 export default function SkillTest() {
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">Skill Test</h1>
+    <div className="p-1">
       {/* Skill Test Components */}
+      <SkillTestCard />
     </div>
   );
 }

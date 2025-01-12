@@ -13,9 +13,11 @@ export default {
     extend: {
       colors: {
         pryClr: "#0000ff",
+        btnBg: "#003566",
+        mainClr: "#ffffff",
       },
       fontFamily: {
-        pryFF: ["Arial", "Helvetica, sans-serif"]
+        pryFF: ["Inter, serif"]
       }
     },
   },
