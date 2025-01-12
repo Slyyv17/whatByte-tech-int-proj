@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { ArrowRight } from "lucide-react";
 
 
@@ -72,6 +72,14 @@ export default function SkillTestCard() {
     return null;
   };
 
+  // for the pie chart
+   // Add user's percentile dynamically and sort
+  const userPieData = { percentile, numberOfStudent: 0 };
+  const updatedPieData = [...baseData, userPieData].sort((a, b) => a.percentile - b.percentile);
+
+  // Chart Colors
+  const COLORS = ["#8884d8", "#8dd1e1", "#82ca9d", "#ffc658", "#ff7f50", "#4CAF50"];
+
   return (
     <section className="flex justify-between items-start gap-2">
       {/* First article */}
@@ -81,13 +89,13 @@ export default function SkillTestCard() {
           <Image
             src="/assets/images/html5_logo.png"
             alt="HTML"
-            width={100}
-            height={100}
+            width={70}
+            height={70}
             className="rounded-lg"
           />
           <div className="flex flex-col items-start justify-center h-fit">
             <h2 className="text-xl font-bold">Hyper Text Markup Language</h2>
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-sm">
               Questions: 08 | Duration: 15 mins | Submitted on 5 June 2021
             </p>
           </div>
@@ -233,16 +241,39 @@ export default function SkillTestCard() {
             <p> {correctAnswers}/15 </p>
         </div>
               
-        <p className="mb-4 text-gray-600"><b>You scored 10 out of 15 questions correctly.</b> However, it still needs some improvements.</p>
+        <p className="mb-4 text-gray-600"><b>You scored {correctAnswers} out of 15 questions correctly.</b> However, it still needs some improvements.</p>
         <div className="flex justify-center">
-          <div className="relative flex items-center justify-center w-32 h-32">
-            <svg className="absolute w-full h-full" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="45" stroke="#ddd" strokeWidth="10" fill="none"/>
-              <circle cx="50" cy="50" r="45" stroke="#4CAF50" strokeWidth="10" fill="none" strokeDasharray="282.743, 282.743" strokeDashoffset="56.5486"/>
-            </svg>
-              <span className="absolute text-2xl font-bold text-gray-700">{correctAnswers}/15</span>
-          </div>
+      <div className="w-full max-w-lg p-4">
+        <h2 className="text-center font-bold text-lg mb-4">Student Percentile Distribution</h2>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <PieChart>
+            <Pie
+              data={updatedPieData}
+              dataKey="numberOfStudent"
+              nameKey="percentile"
+              cx="50%"
+              cy="50%"
+              outerRadius={100}
+              fill="#82ca9d"
+              label
+            >
+              {updatedPieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+
+        <div className="text-center mt-4">
+          <span className="text-xl font-bold text-gray-700">
+            Correct Answers: {correctAnswers}/15
+          </span>
         </div>
+      </div>
+    </div>
       </div>
       </article>
 
