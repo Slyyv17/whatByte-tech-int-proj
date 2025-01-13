@@ -73,28 +73,26 @@ export default function SkillTestCard() {
     return null;
   };
 
-  
-
   return (
-    <section className="flex justify-between items-start gap-2">
+    <section className="flex flex-wrap md:flex-nowrap justify-between items-start gap-2 w-full">
       {/* First article */}
-      <article className="flex flex-col">
+      <article className="flex flex-col flex-1 min-w-[200px] p-4">
         <p className="text-lg text-left">Skill Test</p>
-        <div className="bg-white p-6 rounded-lg shadow-sm w-auto flex items-center justify-between gap-2">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 w-full md:w-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
           <Image
             src="/assets/images/html5_logo.png"
             alt="HTML"
             width={70}
             height={70}
-            className="rounded-lg"
+            className="rounded-lg mb-4 md:mb-0"
           />
           <div className="flex flex-col items-start justify-center h-fit">
-            <h2 className="text-xl font-bold">Hyper Text Markup Language</h2>
+            <h2 className="text-lg md:text-xl font-bold">Hyper Text Markup Language</h2>
             <p className="text-gray-500 text-sm">
               Questions: 08 | Duration: 15 mins | Submitted on 5 June 2021
             </p>
           </div>
-          <div className="flex items-center justify-center h-fit">
+          <div className="flex items-center justify-center h-fit mt-4 md:mt-0">
             <button
               className="px-4 py-2 bg-btnBg text-mainClr border-none rounded-md capitalize"
               onClick={toggleModal}
@@ -104,86 +102,99 @@ export default function SkillTestCard() {
           </div>
         </div>
 
-        {/* Quick Statistics */}
-        <div className="bg-white p-6 rounded-lg shadow-sm max-w-3xl gap-4 mt-4">
-          <h3 className="text-black font-bold">Quick Statistics</h3>
-          <div className="bg-white p-2 max-w-3xl grid grid-cols-3 gap-4 place-items-center">
-            <div className="border-r border-gray-200 py-4 flex justify-center items-center gap-2 pr-2">
-              <div className="bg-gray-200 rounded-full p-0 px-2.5">
-                <Image
-                  src="/assets/images/__Trophy_Emoji-removebg-preview.png"
-                  alt="HTML"
-                  width={25}
-                  height={25}
-                  className="rounded-lg"
-                />
-              </div>
-              <span className="text-sm uppercase">
-                <b>{rank}</b> <br /> Your Rank
-               </span>
-            </div>
 
-            <div className="border-r border-gray-200 py-4 flex justify-center items-center gap-2 pr-2">
-              <div className="bg-gray-200 rounded-full p-1.5 px-2.5">
-                <Image
-                  src="/assets/images/__Clipboard_Emoji-removebg-preview.png"
-                  alt="HTML"
-                  width={25}
-                  height={25}
-                  className="rounded-lg"
-                />
-              </div>
-              <span className="text-sm uppercase">
-                <b>{percentile}%</b> Percentile
-              </span>
-            </div>
+       
+{/* Container for Quick Statistics and Comparison Graph */}
+<div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 w-full gap-4 mt-4 overflow-x-auto md:overflow-hidden">
+  <div className="flex md:block space-x-4 md:space-x-0 w-full min-w-[600px] md:min-w-0">
 
-            <div className="py-4 flex justify-center items-center gap-2">
-              <div className="bg-gray-200 rounded-full p-0.5 px-1.5">
-                <Image
-                  src="/assets/images/__Check_Mark_Button_Emoji-removebg-preview.png"
-                  alt="HTML"
-                  width={25}
-                  height={25}
-                  className="rounded-lg"
-                />
-              </div>
-              <span className="text-sm uppercase">
-                <b>{correctAnswers}/15</b>
-                <br />
-                Correct Answers
-              </span>
-            </div>
+    {/* Quick Statistics Section */}
+    <div className="flex-shrink-0 bg-white p-6 rounded-lg shadow-sm border border-gray-100 min-w-[300px] w-full md:w-auto h-fit">
+      <h3 className="text-black font-bold">Quick Statistics</h3>
+      <div className="bg-white p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center h-fit">
+        {/* Rank Section */}
+        <div className="flex border-r border-gray-200 py-4 justify-between items-center gap-2 pr-2 md:flex-col md:items-start">
+          <div className="bg-gray-200 rounded-full p-0 px-2.5">
+            <Image
+              src="/assets/images/__Trophy_Emoji-removebg-preview.png"
+              alt="HTML"
+              width={25}
+              height={25}
+              className="rounded-lg"
+            />
           </div>
+          <span className="text-sm uppercase text-center md:text-left">
+            <b>{rank}</b>
+            <br />
+            Your Rank
+          </span>
         </div>
-
-        {/* Comparison Graph */}
-        <div className="bg-white p-6 rounded-lg shadow-sm max-w-3xl gap-4 mt-4">
-          <h1 className="capitalize font-bold text-lg">comparison graph</h1>
-          <div>
-            <p className="text-gray-600 text-md">
-              <b>You scored {percentile}% percentile</b> which is lower than the average percentile 72% of all the engineers who took this assessment.
-            </p>
+        {/* Percentile Section */}
+        <div className="flex border-r border-gray-200 py-4 justify-between items-center gap-2 pr-2 md:flex-col md:items-start">
+          <div className="bg-gray-200 rounded-full p-1.5 px-2.5">
+            <Image
+              src="/assets/images/__Clipboard_Emoji-removebg-preview.png"
+              alt="HTML"
+              width={25}
+              height={25}
+              className="rounded-lg"
+            />
           </div>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart
-              data={updatedData}
-              margin={{
-                top: 5, right: 30, left: 20, bottom: 5,
-              }}
-            >
-              <CartesianGrid vertical={true} horizontal={false} stroke="#ccc" strokeWidth={1} />
-              <XAxis dataKey="percentile" />
-              <Tooltip content={<CustomTooltip />} />
-              <Legend />
-              <Line type="monotone" dataKey="numberOfStudent" stroke="#8884d8" activeDot={{ r: 8 }} />
-            </LineChart>
-          </ResponsiveContainer>
+          <span className="text-sm uppercase text-center md:text-left">
+            <b>{percentile}%</b> Percentile
+          </span>
         </div>
+        {/* Correct Answers Section */}
+        <div className="flex py-4 justify-between items-center gap-2 md:flex-col md:items-start">
+          <div className="bg-gray-200 rounded-full p-0.5 px-1.5">
+            <Image
+              src="/assets/images/__Check_Mark_Button_Emoji-removebg-preview.png"
+              alt="HTML"
+              width={25}
+              height={25}
+              className="rounded-lg"
+            />
+          </div>
+          <span className="text-sm uppercase text-center md:text-left">
+            <b>{correctAnswers}/15</b>
+            <br />
+            Correct Answers
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {/* Comparison Graph Section */}
+    <div className="flex-shrink-0 bg-white p-6 rounded-lg shadow-sm border border-gray-100 min-w-[300px] w-full md:w-auto h-fit">
+      <h1 className="capitalize font-bold text-lg">Comparison Graph</h1>
+      <div>
+        <p className="text-gray-600 text-md">
+          <b>You scored {percentile}% percentile</b> which is lower than the average percentile 72% of all the engineers who took this assessment.
+        </p>
+      </div>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart
+          data={updatedData}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid vertical={true} horizontal={false} stroke="#ccc" strokeWidth={1} />
+          <XAxis dataKey="percentile" />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend />
+          <Line type="monotone" dataKey="numberOfStudent" stroke="#8884d8" activeDot={{ r: 8 }} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  </div>
+</div>
+
+
+
+
       </article>
 
       {/* Syllabus - second article */}
-    <article>
+    <article className="flex-1 min-w-[200px] p-4">
       {/* Syllabus and Question Analysis */}
       <div className="">
           <Syllabus correctAnswers={correctAnswers} scoreData={baseData} />
