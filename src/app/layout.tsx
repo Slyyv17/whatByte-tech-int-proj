@@ -23,7 +23,7 @@ export default function RootLayout({
           <main className="w-full md:w-5/6 h-full bg-white p-4 overflow-y-auto">
             {children}
           </main>
-          
+
           {/* Sidebar for mobile and tablet */}
           <nav className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 flex justify-around md:hidden z-50">
             <ul className="flex w-full justify-around">

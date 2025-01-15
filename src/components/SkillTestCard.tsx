@@ -106,66 +106,72 @@ export default function SkillTestCard() {
        
 {/* Container for Quick Statistics and Comparison Graph */}
 <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 w-full gap-4 mt-4 overflow-x-auto md:overflow-hidden">
-  <div className="flex md:block space-x-4 md:space-x-0 w-full min-w-[600px] md:min-w-0">
+  <div className="flex md:block space-x-4 md:space-x-0 w-full min-w-[600px] md:min-w-0 gap-4">
 
-    {/* Quick Statistics Section */}
-    <div className="flex-shrink-0 bg-white p-6 rounded-lg shadow-sm border border-gray-100 min-w-[300px] w-full md:w-auto h-fit">
-      <h3 className="text-black font-bold">Quick Statistics</h3>
-      <div className="bg-white p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center h-fit">
-        {/* Rank Section */}
-        <div className="flex border-r border-gray-200 py-4 justify-between items-center gap-2 pr-2 md:flex-col md:items-start">
-          <div className="bg-gray-200 rounded-full p-0 px-2.5">
-            <Image
-              src="/assets/images/__Trophy_Emoji-removebg-preview.png"
-              alt="HTML"
-              width={25}
-              height={25}
-              className="rounded-lg"
-            />
-          </div>
-          <span className="text-sm uppercase text-center md:text-left">
-            <b>{rank}</b>
-            <br />
-            Your Rank
-          </span>
-        </div>
-        {/* Percentile Section */}
-        <div className="flex border-r border-gray-200 py-4 justify-between items-center gap-2 pr-2 md:flex-col md:items-start">
-          <div className="bg-gray-200 rounded-full p-1.5 px-2.5">
-            <Image
-              src="/assets/images/__Clipboard_Emoji-removebg-preview.png"
-              alt="HTML"
-              width={25}
-              height={25}
-              className="rounded-lg"
-            />
-          </div>
-          <span className="text-sm uppercase text-center md:text-left">
-            <b>{percentile}%</b> Percentile
-          </span>
-        </div>
-        {/* Correct Answers Section */}
-        <div className="flex py-4 justify-between items-center gap-2 md:flex-col md:items-start">
-          <div className="bg-gray-200 rounded-full p-0.5 px-1.5">
-            <Image
-              src="/assets/images/__Check_Mark_Button_Emoji-removebg-preview.png"
-              alt="HTML"
-              width={25}
-              height={25}
-              className="rounded-lg"
-            />
-          </div>
-          <span className="text-sm uppercase text-center md:text-left">
-            <b>{correctAnswers}/15</b>
-            <br />
-            Correct Answers
-          </span>
-        </div>
+{/* Quick Statistics Section */}
+<div className="flex-shrink-0 bg-white shadow-sm p-6 rounded-lg min-w-[300px] w-fit md:w-auto h-fit">
+  <h3 className="text-black font-bold mb-4 text-left md:text-left">Quick Statistics</h3>
+
+  <div className="bg-white p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center w-fit">
+
+    {/* Rank Section */}
+    <div className="flex flex-col items-center justify-center md:items-start text-center md:text-left gap-2 md:border-r md:pr-2 md:border-gray-200">
+      <div className="bg-gray-200 rounded-full p-1 px-3">
+        <Image
+          src="/assets/images/__Trophy_Emoji-removebg-preview.png"
+          alt="Rank Icon"
+          width={25}
+          height={25}
+          className="rounded-lg"
+        />
       </div>
+      <span className="text-sm uppercase">
+        <b>{rank}</b>
+        <br />
+        Your Rank
+      </span>
     </div>
 
+    {/* Percentile Section */}
+    <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 md:border-r md:border-gray-200">
+      <div className="bg-gray-200 rounded-full p-1 px-3">
+        <Image
+          src="/assets/images/__Clipboard_Emoji-removebg-preview.png"
+          alt="Percentile Icon"
+          width={25}
+          height={25}
+          className="rounded-lg"
+        />
+      </div>
+      <span className="text-sm uppercase">
+        <b>{percentile}%</b> Percentile
+      </span>
+    </div>
+
+    {/* Correct Answers Section */}
+    <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2">
+      <div className="bg-gray-200 rounded-full p-1 px-3">
+        <Image
+          src="/assets/images/__Check_Mark_Button_Emoji-removebg-preview.png"
+          alt="Correct Answers Icon"
+          width={25}
+          height={25}
+          className="rounded-lg"
+        />
+      </div>
+      <span className="text-sm uppercase">
+        <b>{correctAnswers}/15</b>
+        <br />
+        Correct Answers
+      </span>
+    </div>
+
+  </div>
+</div>
+
+
     {/* Comparison Graph Section */}
-    <div className="flex-shrink-0 bg-white p-6 rounded-lg shadow-sm border border-gray-100 min-w-[300px] w-full md:w-auto h-fit">
+    <div className="flex-shrink-0 bg-white p-6 rounded-lg border border-gray-100 min-w-[300px] w-full md:w-auto h-fit md:mt-4">
       <h1 className="capitalize font-bold text-lg">Comparison Graph</h1>
       <div>
         <p className="text-gray-600 text-md">
@@ -188,10 +194,7 @@ export default function SkillTestCard() {
   </div>
 </div>
 
-
-
-
-      </article>
+</article>
 
       {/* Syllabus - second article */}
     <article className="flex-1 min-w-[200px] p-4">

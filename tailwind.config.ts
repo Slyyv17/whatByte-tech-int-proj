@@ -17,7 +17,7 @@ export default {
         mainClr: "#ffffff",
       },
       fontFamily: {
-        pryFF: ["Inter, serif"]
+        pryFF: ["Inter, serif"],
       }
     },
   },
